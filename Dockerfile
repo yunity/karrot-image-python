@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 RUN apt-get update && \
     apt-get install -y \
@@ -6,31 +6,30 @@ RUN apt-get update && \
         gnupg \
         gnupg1 \
         gnupg2 \
-        python3.5 \
-        python3.5-dev \
+        python3.7 \
+        python3.7-dev \
         virtualenv \
         build-essential \
         git \
         wget \
         rsync \
         python3-pip \
-        entr
-
-RUN curl -s https://deb.nodesource.com/setup_10.x | bash -
+        entr \
+        nodejs \
+        yarn
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" > \
-      /etc/apt/sources.list.d/yarn.list
+      /etc/apt/sources.list.d/yarn.list        
 
 RUN apt-get update && \
     apt-get install -y \
-        nodejs \
-        yarn
+        yarn        
 
 RUN curl -o /usr/local/bin/circleci \
         https://circle-downloads.s3.amazonaws.com/releases/build_agent_wrapper/circleci && \
     chmod +x /usr/local/bin/circleci
 
-RUN pip3 install --upgrade pip==10.0.1 pip-tools==2.0.2
+RUN pip3 install pip-tools
 COPY requirements.txt /tmp/
 RUN pip3 install -r /tmp/requirements.txt
