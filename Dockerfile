@@ -33,3 +33,9 @@ RUN curl -o /usr/local/bin/circleci \
 RUN pip3 install pip-tools
 COPY requirements.txt /tmp/
 RUN pip3 install -r /tmp/requirements.txt
+
+RUN wget https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz && \
+    tar -xf hub-linux-amd64-2.14.2.tgz && \
+    ./hub-linux-amd64-2.14.2/install && \
+    rm hub-linux-amd64-2.14.2.tgz && \
+    rm -r hub-linux-amd64-2.14.2
