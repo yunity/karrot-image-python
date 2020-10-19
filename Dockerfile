@@ -16,6 +16,9 @@ RUN apt-get update && \
         python3-pip \
         entr \
         nodejs \
+        binutils \
+        libproj-dev \
+        gdal-bin \
     && apt clean
 
 RUN curl -o /usr/local/bin/circleci \
