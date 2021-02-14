@@ -19,6 +19,7 @@ RUN apt-get update && \
         binutils \
         libproj-dev \
         gdal-bin \
+        zip \
     && apt clean
 
 RUN curl -o /usr/local/bin/circleci \
