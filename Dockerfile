@@ -46,3 +46,8 @@ RUN wget https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64
     ./hub-linux-amd64-2.14.2/install && \
     rm hub-linux-amd64-2.14.2.tgz && \
     rm -r hub-linux-amd64-2.14.2
+
+RUN wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz && \
+    tar -xf mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz && \
+    rm mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz && \
+    mv mdbook /usr/local/bin
